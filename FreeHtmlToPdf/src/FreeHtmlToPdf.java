@@ -9,6 +9,8 @@ import java.io.StringWriter;
 import org.w3c.tidy.Tidy;
 import org.xhtmlrenderer.pdf.ITextRenderer;
 
+import com.lowagie.text.pdf.BaseFont;
+
 public class FreeHtmlToPdf {
 
 	
@@ -39,12 +41,12 @@ public class FreeHtmlToPdf {
 	    
 	    ITextRenderer renderer = new ITextRenderer();
 	    renderer.setDocumentFromString(sb.toString());
-	    renderer.getFontResolver().addFont("notokr-regular.TTF", "Identity-H", false);
+	    renderer.getFontResolver().addFont("notokr-regular.TTF", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
 	    renderer.layout();
 	    renderer.createPDF(os, false);
 	    
 	    renderer.setDocumentFromString(sb.toString());
-	    renderer.getFontResolver().addFont("notokr-regular.TTF", "Identity-H", false);
+	    renderer.getFontResolver().addFont("notokr-regular.TTF", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
 	    renderer.layout();
 	    renderer.writeNextDocument();
 	    
